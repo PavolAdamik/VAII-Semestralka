@@ -15,20 +15,14 @@ nav {
     background-size: cover   ;
     height: 50vh;
     width: 100vw;
-<<<<<<< HEAD
     margin: 0;
-=======
     margin: 20px;
->>>>>>> bb513ca (Kontkt, otazky a homepage)
 }
 
 .nadpisH1 {
     position: center;
-<<<<<<< HEAD
     margin: 20px;
     /*color: black;*/
-=======
->>>>>>> bb513ca (Kontkt, otazky a homepage)
     font-style: italic;
 }
 
@@ -43,11 +37,6 @@ nav {
 .auta {
     margin: 10px;
 }
-
-/*.col {*/
-/*    flex: auto;*/
-/*    margin: 10px;*/
-/*}*/
 
 .listOfCars {
     margin: 10px;
@@ -68,11 +57,8 @@ nav {
 
 .not-underline {
     text-decoration: none;
-<<<<<<< HEAD
-=======
 }
 
 .kontainer {
     margin: 20px;
->>>>>>> bb513ca (Kontkt, otazky a homepage)
 }
