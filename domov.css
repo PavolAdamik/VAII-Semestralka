@@ -15,8 +15,11 @@ nav {
     background-size: cover   ;
     height: 50vh;
     width: 100vw;
-    margin: 0;
     margin: 20px;
+}
+
+.farba {
+    color: black;
 }
 
 .nadpisH1 {
