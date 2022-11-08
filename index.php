@@ -5,7 +5,11 @@ include 'header.php';
 <!DOCTYPE html>
 <html lang="en">
     <div>
-        <h1 class="nadpisH1">Vitajte!</h1>
+        <!--<h1 class="nadpisH1">Vitajte!</h1> -->
+        <?php if(isset($_SESSION['prihlaseny']) && $_SESSION['prihlaseny'] == '1' && isset($_SESSION['celemeno'])): ?>
+            <h1 class="nadpisH1">Vitajte <?php echo $_SESSION['celemeno']?> !</h1>
+            <!--<p id="prihlasenie" class="pull-right">Vitajte: <?php echo $_SESSION['celemeno']?> !</p> -->
+        <?php endif; ?>
         <img src="https://deltarentcar.sk/wp-content/uploads/2022/03/auta_uvod.png" alt="..." class="responsive">
     </div>
 
@@ -27,7 +31,7 @@ include 'header.php';
                         <h5 class="card-title">Osobné autá</h5>
                         <p class="card-text">Môžete si vybrať zo značiek: Škoda, Volkswagen, Dacia, Suzuky. Ceny sa pohybujú od 40-60&#8364; &#x2f; deň. </p>
 
-                        <button type="button" class="btn btn-outline-success" onclick="location.href='osobneAuta.html'">Zobraziť autá</button>
+                        <button type="button" class="btn btn-outline-success" onclick="location.href='osobneAuta.php'">Zobraziť autá</button>
 
                     </div>
                 </div>

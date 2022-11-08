@@ -1,5 +1,5 @@
 <?php
-//session_start();
+session_start();
 ?>
 
 <!DOCTYPE html>
@@ -8,7 +8,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-Zenh87qX5JnK2Jl0vWa8Ck2rdkQ2Bzep5IDxbcnCeuOxjzrPF/et3URy9Bv1WTRi" crossorigin="anonymous">
-    <link rel="stylesheet" href="pravidla.css">
+    <link rel="stylesheet" href="rules.css">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.9.1/font/bootstrap-icons.css">
     <title>Palova Pozicovna</title>
 </head>
@@ -34,7 +34,7 @@
                                 Výber auta
                             </a>
                             <ul class="dropdown-menu">
-                                <li><a class="dropdown-item" href="osobneAuta.php">Osobné auto</a></li>
+                                <li><a class="dropdown-item" href="personalCars.php">Osobné auto</a></li>
                                 <li><hr class="dropdown-divider"></li>
                                 <li><a class="dropdown-item disabled" href="#">Dodávka</a></li>
                                 <li><hr class="dropdown-divider"></li>
@@ -46,15 +46,38 @@
                         <li class="nav-item">
                             <a class="nav-link" aria-current="page" href="otazky.php">Otázky k prenájmu</a>
                         </li>
+                        <?php if(isset($_SESSION['admin']) && isset($_SESSION['prihlaseny']) && $_SESSION['admin'] != '1' && $_SESSION['prihlaseny'] == '1'): ?>
+
+                            <li class="nav-item">
+                                <a class="nav-link" aria-current="page" href="mojePozicane.php">Moje požičané</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" aria-current="page" href="profil.php">Profil</a>
+                            </li>
+                        <?php elseif(isset($_SESSION['prihlaseny']) && $_SESSION['prihlaseny'] == '1' && $_SESSION['admin'] == '1'): ?>
+                            <li class="nav-item">
+                                <a class="nav-link" aria-current="page" href="prenajateAuta.php">Prenajaté autá</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" aria-current="page" href="zoznamPouzivatelov.php">Používatelia</a>
+                            </li><li class="nav-item">
+                                <a class="nav-link" aria-current="page" href="profil.php">Profil</a>
+                            </li>
+                        <?php endif; ?>
                         <li class="nav-item">
-                            <a class="nav-link" href="kontakt.php">Kontakt</a>
+                            <a class="nav-link" href="contact.php">Kontakt</a>
                         </li>
                     </ul>
                     <div class="buttons">
 <!--                        <input type="button" value="Login" />-->
 <!--                        <input type="button" value="Register" />-->
-                        <button class="button button1">Login</button>
-                        <button class="button button1">Register</button>
+
+                        <?php if(isset($_SESSION['prihlaseny']) && $_SESSION['prihlaseny'] == '1'): ?>
+                            <button class="button button1"><a class="nav-link" href="logout.php">Odhlásiť sa</a></button>
+                        <?php else: ?>
+                            <button class="button button1"><a class="nav-link" href="login.php">Prihlásiť sa</a></button>
+                            <button class="button button1"><a class="nav-link" href="registration.php">Registrovať</a></button>
+                        <?php endif; ?>
 
                     </div>
                 </div>
