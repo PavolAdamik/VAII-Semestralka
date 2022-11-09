@@ -14,7 +14,7 @@ if(isset($_POST['email']) && isset($_POST['password'])){
 
         $result = mysqli_query($db,"SELECT id,firstname,lastname FROM person WHERE email = '$email'");
         $row = mysqli_fetch_row($result);
-        $_SESSION['celemeno'] = $row[1]. " ".$row[2];
+        $_SESSION['fullname'] = $row[1]. " ".$row[2];
         $_SESSION['id'] = $row[0];
 
         $result = mysqli_query($db,"SELECT isAdmin FROM person WHERE email = '$email'");

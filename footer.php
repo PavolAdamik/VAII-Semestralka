@@ -2,7 +2,7 @@
 //include 'header.php';
 ?>
 
-<div>
+<div class="footer">
     <footer class="bg-dark text-center text-lg-start text-white">
         <div class="container p-4">
             <div class="row mt-4">

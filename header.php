@@ -10,6 +10,8 @@ session_start();
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-Zenh87qX5JnK2Jl0vWa8Ck2rdkQ2Bzep5IDxbcnCeuOxjzrPF/et3URy9Bv1WTRi" crossorigin="anonymous">
     <link rel="stylesheet" href="rules.css">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.9.1/font/bootstrap-icons.css">
+    <script src="javaScript.js" type="application/javascript"></script>
+
     <title>Palova Pozicovna</title>
 </head>
 <body>
@@ -34,7 +36,7 @@ session_start();
                                 Výber auta
                             </a>
                             <ul class="dropdown-menu">
-                                <li><a class="dropdown-item" href="personalCars.php">Osobné auto</a></li>
+                                <li><a class="dropdown-item" href="osobneAuta.php">Osobné auto</a></li>
                                 <li><hr class="dropdown-divider"></li>
                                 <li><a class="dropdown-item disabled" href="#">Dodávka</a></li>
                                 <li><hr class="dropdown-divider"></li>
@@ -47,9 +49,8 @@ session_start();
                             <a class="nav-link" aria-current="page" href="otazky.php">Otázky k prenájmu</a>
                         </li>
                         <?php if(isset($_SESSION['admin']) && isset($_SESSION['prihlaseny']) && $_SESSION['admin'] != '1' && $_SESSION['prihlaseny'] == '1'): ?>
-
                             <li class="nav-item">
-                                <a class="nav-link" aria-current="page" href="mojePozicane.php">Moje požičané</a>
+                                <a class="nav-link" aria-current="page" href="mojePozicane.php">Moje prenajaté</a>
                             </li>
                             <li class="nav-item">
                                 <a class="nav-link" aria-current="page" href="profil.php">Profil</a>
@@ -59,7 +60,7 @@ session_start();
                                 <a class="nav-link" aria-current="page" href="prenajateAuta.php">Prenajaté autá</a>
                             </li>
                             <li class="nav-item">
-                                <a class="nav-link" aria-current="page" href="zoznamPouzivatelov.php">Používatelia</a>
+                                <a class="nav-link" aria-current="page" href="userList.php">Používatelia</a>
                             </li><li class="nav-item">
                                 <a class="nav-link" aria-current="page" href="profil.php">Profil</a>
                             </li>
