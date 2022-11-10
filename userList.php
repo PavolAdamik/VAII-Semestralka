@@ -1,24 +1,13 @@
 <?php
 include 'header.php';
 
-if(isset($_POST['delete_pouzivatel']) && $_POST['delete_pouzivatel'] > 0){
+if(isset($_POST['del_user']) && $_POST['del_user'] > 0){
     include 'database.php';
-    //mysqli_query($db,"delete from vypozicka where id_osoby = ".$_POST['delete_pouzivatel']);
-    mysqli_query($db,"delete from person where id= ".$_POST['delete_pouzivatel']);
+    //mysqli_query($db,"delete from vypozicka where id_osoby = ".$_POST['del_user']);
+    mysqli_query($db,"delete from person where id= ".$_POST['del_user']);
     mysqli_close($db);
-    $_POST['delete_pouzivatel']==null;
+    $_POST['del_user']==null;
 
-
-/*if(isset($_POST['delete'])) {
-    include 'database.php';
-    mysqli_query($db,"delete from person where id= ".$_POST['delete']);
-    mysqli_close($db);
-    $_POST['delete_pouzivatel']==null;
-
-    /*echo $did = $_POST['id'];
-    $query = $link->prepare( "DELETE FROM student WHERE id=?" );
-    $query->bind_param( "s", $did );
-    $query->execute();*/
 }
 
 include 'database.php';
@@ -28,10 +17,9 @@ $table = mysqli_query($db, $query);
 mysqli_close($db);
 ?>
 
-<div class="pozadie">
     <h3 class="nadpisH1">Zoznam používateľov</h3>
     <div class="tabulka">
-        <table id="uzivatelia">
+        <table id="users" align="center">
             <tr>
                 <th>Meno</th>
                 <th>Priezvisko</th>
@@ -57,7 +45,7 @@ mysqli_close($db);
                 for($i = 1; $i < 5; $i++){
                     print "\t\t<td>$row[$i]</td>\n";
                 }
-                print "\t\t<td class='tlacidla kurzor' onclick=\"redirect('delete_pouzivatel',$row[0],'');
+                print "\t\t<td class='tlacidla kurzor' onclick=\"redirect('del_user',$row[0],'');
                     \"><img src='pictures/delete.png' class='tlacidla' alt='vymazat riadok' /></td>\n";
             }
             ?>
@@ -88,15 +76,13 @@ mysqli_close($db);
             }
             */?>
         </table>
-        <div class="form-group">
+        <div class="form-group" align="center">
             <div class="col-sm-1">
                 <button type="button" id="gombik" class="btn btn-default" name="zotried" onclick="zotried_uzivatelov()">Zotriediť</button>
             </div>
         </div>
 
     </div>
-
-</div>
 
 <?php
 include 'footer.php';

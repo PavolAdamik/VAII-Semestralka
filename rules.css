@@ -10,6 +10,7 @@ nav {
     /*display: flex;*/
 }
 
+
 .responsive {
     width: 100%;
     height: auto;
@@ -42,6 +43,10 @@ nav {
     margin: 10px;
 }
 
+.margin {
+    margin: 10px;
+}
+
 .listOfCars {
     margin: 10px;
 }
@@ -51,7 +56,6 @@ nav {
 }
 
 .btn {
-
     float: right;
     margin: 5px;
 }
@@ -183,7 +187,7 @@ form{
 }
 
 .tabulka{
-    color: #161c1c;
+    color: #ffffff;
     border-collapse:collapse;
     padding-left: 3%;
     padding-right: 3%;
@@ -192,10 +196,12 @@ form{
     max-width: 100%;
     margin: auto;
     height: auto;
+
+
 }
 
 .tabulka th{
-    background-color: rgba(218, 0, 32, 0.85);;
+    background-color: rgba(21, 19, 19, 0.85);;
 }
 
 .tabulka td, .tabulka th {
@@ -213,7 +219,7 @@ form{
 }
 
 .tabulka tr:hover td {
-    background-color: wheat;
+    background-color: rgba(245, 194, 179, 0.32);
 }
 
 .kurzor{
@@ -232,14 +238,16 @@ form{
 }
 
 .reg_uspesna{
-    color: wheat;
+    color: #1f1e19;
     padding: 20px;
+    text-align: center;
 }
 
+/*
 .footer{
     position: fixed;
     left: 0;
     right: 0;
     bottom: 0;
 
-}
+}*/

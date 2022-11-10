@@ -17,29 +17,43 @@ if(isset($_POST['firstname']) && isset($_POST['lastname']) && isset($_POST['driv
      //$user_type = $_POST['user_type'];
 
 
-     $select = " SELECT * FROM person WHERE email = '$email' && password = '$password' ";
+     $select1 = " SELECT * FROM person WHERE password = '$password' ";
+     $res1 = mysqli_query($db, $select1);
+    $result1 = mysqli_num_rows($res1);
 
-     $result = mysqli_query($db, $select);
+    $select2 = " SELECT * FROM person WHERE email = '$email' ";
+    $res2 = mysqli_query($db, $select2);
+    $result2 = mysqli_num_rows($res2);
 
-     if(mysqli_num_rows($result) > 0){
+     if($result1 > 0) {
+         echo "<script type='text/javascript'>alert('Heslo už existuje. Zadajte nové/iné heslo.');</script>";
+         //$error[] = 'Používateľ už existuje!';
+     }
+     if($result2 > 0){
+         echo "<script type='text/javascript'>alert('Email už existuje. Zadajte nové email.');</script>";
+     }
+     if($password != $confirmPassword){
+         echo "<script type='text/javascript'>alert('Heslá sa nezhodujú, skúste znovu');</script>";
 
-         $error[] = 'Používateľ už existuje!';
+         //$error[] = 'Heslá sa nezhodujú!';
+     }
+     if($result1 == 0 && $result2 == 0) {
+         $insert = "INSERT INTO person(firstname, lastname, driving_licence, email, password, isAdmin) VALUES('$firstname','$lastname','$driving_licence','$email','$password',0)";
+         mysqli_query($db, $insert) or die ("Pouzivatela sa nepodarilo registrovať");
+         $_SESSION['success'] = 1;
 
-     }else{
-         if($password != $confirmPassword){
-             $error[] = 'Heslá sa nezhodujú!';
-         }else{
+     }
+         /*else{
              //header('location:index.php');
-             $insert = "INSERT INTO person(firstname, lastname, driving_licence, email, password, isAdmin) VALUES('$firstname','$lastname','$driving_licence','$email','$password',0)";
-             mysqli_query($db, $insert);
+
              //include 'login.php';
              header('location:index.php');
 
              //$db->query("INSERT INTO person(firstname, lastname, driving_licence, email, password, isAdmin) VALUES('$firstname','$lastname','$driving_licence','$email','$password',0)")
              //or die ("Užívateľa sa nepodarilo registrovať.");
              $_SESSION['success'] = 1;
-         }
-     }
+         }*/
+
     /*
     $vysledok1 = mysqli_query($db, "SELECT * FROM person WHERE email = '$email'");
     $pocet1 = mysqli_num_rows($vysledok1);
@@ -64,8 +78,10 @@ if(isset($_POST['firstname']) && isset($_POST['lastname']) && isset($_POST['driv
 mysqli_close($db);
 ?>
 
-<!DOCTYPE html>
-<html lang="en">
+<!--<!DOCTYPE html>
+<html lang="en">-->
+
+<?php if($_SESSION['success'] == 0): ?>
 
 <form action="registration.php" class="form-horizontal bg-dark" method="post" onsubmit="return reg_kontrola(this);>
 
@@ -87,13 +103,13 @@ mysqli_close($db);
                                     <div class="row">
                                         <div class="col-md-6 mb-4">
                                             <div class="form-outline">
-                                                <input type="text" id="firstname" name="firstname" class="form-control form-control-lg" placeholder="Meno" />
+                                                <input type="text" id="firstname" name="firstname" class="form__input" placeholder="Meno" />
                                                 <!--<label class="form-label" for="form3Example1m">Meno</label> -->
                                             </div>
                                         </div>
                                         <div class="col-md-6 mb-4">
                                             <div class="form-outline">
-                                                <input type="text" id="lastname" name="lastname" class="form-control form-control-lg" placeholder="Priezvisko" />
+                                                <input type="text" id="lastname" name="lastname" class="form__input" placeholder="Priezvisko" />
                                             </div>
                                         </div>
                                     </div>
@@ -101,25 +117,25 @@ mysqli_close($db);
                                     <div class="row">
                                         <div class="col-md-6 mb-4">
                                             <div class="form-outline">
-                                                <input type="text" id="driving_licence" name="driving_licence" class="form-control form-control-lg" placeholder="Vodičský preukaz" />
+                                                <input type="text" id="driving_licence" name="driving_licence" class="form__input" placeholder="Vodičský preukaz" />
                                             </div>
                                         </div>
                                     </div>
 
                                     <div class="form-outline mb-4">
-                                        <input type="text" id="email" name="email" class="form-control form-control-lg" placeholder="Emailová adresa" />
+                                        <input type="text" id="email" name="email" class="form__input" onkeyup="checkEmail()" placeholder="Emailová adresa" />
                                     </div>
 
                                     <div class="row">
                                         <div class="col-md-6 mb-4">
                                             <div class="form-outline">
-                                                <input type="password" id="password" name="password" class="form-control form-control-lg" placeholder="Heslo" />
+                                                <input type="password" id="password" name="password" class="form__input" placeholder="Heslo" />
                                             </div>
                                         </div>
 
                                         <div class="col-md-6 mb-4">
                                             <div class="form-outline">
-                                                <input type="password" id="confirmPassword" name="confirmPassword" class="form-control form-control-lg" placeholder="Potvrdenie hesla" />
+                                                <input type="password" id="confirmPassword" name="confirmPassword" class="form__input" placeholder="Potvrdenie hesla" />
                                             </div>
                                         </div>
                                     </div>
@@ -159,7 +175,11 @@ mysqli_close($db);
             </div>
         </div>
 </form>
-</html>
+<?php else:?>
+    <p class="reg_uspesna">Registrácia prebehla úspešne <a href="login.php">PRIHLÁSIŤ SA</a></p>
+<?php endif;?>
+
+
 <?php
 include 'footer.php';
 ?>

@@ -1,9 +1,10 @@
 <?php
 //session_start();
 include 'header.php';
+require "App.php";
+$app = new App();
 ?>
-<!DOCTYPE html>
-<html lang="en">
+
     <div>
         <!--<h1 class="nadpisH1">Vitajte!</h1> -->
         <?php if(isset($_SESSION['prihlaseny']) && $_SESSION['prihlaseny'] == '1' && isset($_SESSION['fullname'])): ?>
@@ -23,7 +24,8 @@ include 'header.php';
     <div class="kontainer">
         <!--    (Mám spravenú len kategóriu osobné autá tak ju hodím všade)    flex-wrap d-flex justify-content-start -->
         <h3 class="nadpisH1">Naša ponuka:</h3>
-        <div class="row row-cols-1 row-cols-md-4 g-4 ">
+
+        <!--<div class="row row-cols-1 row-cols-md-4 g-4">
             <div class="col ">
                 <div class="card ">
                     <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRE7V0VNY_lm2a-itih84y6nLwVz0yCBEuVFgfHwtJ572Z0sB82qgupNV6LWSBtqh4PGeI&usqp=CAU" class="card-img-top" alt="...">
@@ -32,9 +34,9 @@ include 'header.php';
                         <p class="card-text">Môžete si vybrať zo značiek: Škoda, Volkswagen, Dacia, Suzuky. Ceny sa pohybujú od 40-60&#8364; &#x2f; deň. </p>
 
                         <button type="button" class="btn btn-outline-success" onclick="location.href='osobneAuta.php'">Zobraziť autá</button>
-                        <?php if(isset($_SESSION['prihlaseny']) && $_SESSION['prihlaseny'] == '1' && $_SESSION['admin'] == '1'): ?>
+                        <?php /*if(isset($_SESSION['prihlaseny']) && $_SESSION['prihlaseny'] == '1' && $_SESSION['admin'] == '1'): */?>
                         <button type="button" class="btn btn-outline-danger" onclick="location.href='osobneAuta.php'">Vymazať osobné autá</button>
-                        <?php endif; ?>
+                        <?php /*endif; */?>
 
                     </div>
                 </div>
@@ -46,9 +48,9 @@ include 'header.php';
                         <h5 class="card-title">Dodávky</h5>
                         <p class="card-text">Môžete si vybrať zo značiek: Citroen, Volkswagen, Mercedes. Ceny sa pohybujú od 30 - 50&#8364; / deň.</p>
                         <button type="button" class="btn btn-outline-success disabled">Zobraziť autá</button>
-                        <?php if(isset($_SESSION['prihlaseny']) && $_SESSION['prihlaseny'] == '1' && $_SESSION['admin'] == '1'): ?>
+                        <?php /*if(isset($_SESSION['prihlaseny']) && $_SESSION['prihlaseny'] == '1' && $_SESSION['admin'] == '1'): */?>
                             <button type="button" class="btn btn-outline-danger" onclick="location.href='osobneAuta.php'">Vymazať osobné autá</button>
-                        <?php endif; ?>
+                        <?php /*endif; */?>
                     </div>
                 </div>
             </div>
@@ -59,9 +61,9 @@ include 'header.php';
                         <h5 class="card-title">Autobusy</h5>
                         <p class="card-text">Môžete si vybrať zo značiek: Iveco, Irisbus, MAN, tatra. Ceny sa pohybujú od 50 - 70&#8364; / deň.</p>
                         <button type="button" class="btn btn-outline-success disabled">Zobraziť autá</button>
-                        <?php if(isset($_SESSION['prihlaseny']) && $_SESSION['prihlaseny'] == '1' && $_SESSION['admin'] == '1'): ?>
+                        <?php /*if(isset($_SESSION['prihlaseny']) && $_SESSION['prihlaseny'] == '1' && $_SESSION['admin'] == '1'): */?>
                             <button type="button" class="btn btn-outline-danger" onclick="location.href='osobneAuta.php'">Vymazať osobné autá</button>
-                        <?php endif; ?>
+                        <?php /*endif; */?>
                     </div>
                 </div>
             </div>
@@ -72,15 +74,70 @@ include 'header.php';
                         <h5 class="card-title">Športové autá</h5>
                         <p class="card-text">Môžete si vybrať zo značiek: Nissan a Mustang. Ceny sa pohybujú od 100 - 150&#8364; / deň.</p>
                         <button type="button" class="btn btn-outline-success disabled">Zobraziť autá</button>
-                        <?php if(isset($_SESSION['prihlaseny']) && $_SESSION['prihlaseny'] == '1' && $_SESSION['admin'] == '1'): ?>
+                        <?php /*if(isset($_SESSION['prihlaseny']) && $_SESSION['prihlaseny'] == '1' && $_SESSION['admin'] == '1'): */?>
                             <button type="button" class="btn btn-outline-danger" onclick="location.href='osobneAuta.php'">Vymazať osobné autá</button>
-                        <?php endif; ?>
+                        <?php /*endif; */?>
                     </div>
                 </div>
             </div>
+        </div>-->
+        <?php if(isset($_SESSION['prihlaseny']) && $_SESSION['prihlaseny'] == '1' && $_SESSION['admin'] == '1'): ?>
+
+        <div class="row">
+            <div class="col my-2 ">
+
+                <div class="card margin" >
+                    <H3 class="nadpisH1">Vytvorit dalsie auto ?</H3>
+
+                    <form method="post" enctype="multipart/form-data">
+                        <div class="col my-2 ">
+                            <input type="file" name="file" class="margin"><br>
+                            <input type="text" name="nazov" class="margin" placeholder="Zadaj nazov"><br>
+                            <input type="text" name="popis" placeholder="Zadaj popis" class="margin"><br>
+                            <input type="submit" value="Odosli subor" class="margin">
+<!--                            <button type="button" class="btn btn-outline-success">Vytvorit</button>
+-->
+                        </div>
+
+                    </form>
+
+                </div>
+            </div>
+        </div>
+        <?php endif;?>
+
+        <div class="d-flex justify-content-lg-start flex-wrap ">
+            <?php foreach ($app->getAllVehicle() as $vehicle) { ?>
+                <div class="card" style="width: 16rem; margin: 1rem">
+                    <img src="pictures/<?=$vehicle->getImage()?>" class="card-img-top" height="160">
+                    <div class="card-body text-end">
+                        <!--<div class="text-start mt-1">
+                           <form method="post">
+                             <input type="hidden" name="id" value="<?/*= $vehicle->getId() */?>">
+                                <a href="osobneAuta.php" class="btn btn-outline-success right">Zobraziť</a>
+                            </form>
+--><!--                            <button type="button" class="btn btn-outline-success" onclick="location.href='osobneAuta.php'>Zobraziť autá</button>
+                     </div>-->
+                        <div class="text-start mt-2 ">
+                            <strong class="margin"><?= $vehicle->getName() ?></strong><br>
+                            <p class="margin"><?= $vehicle->getDescription() ?></p>
+                        </div>
+                    </div>
+                    <button type="button" class="btn btn-outline-success" onclick="location.href='osobneAuta.php'">Zobraziť autá</button>
+                    <?php if(isset($_SESSION['prihlaseny']) && $_SESSION['prihlaseny'] == '1' && $_SESSION['admin'] == '1'): ?>
+
+                    <form method="post">
+                        <input type="hidden" name="id_to_delete" value="<?= $vehicle->getId()?>">
+                        <input type="submit" name="delete" value="Vymazať" class="btn btn-outline-danger">
+<!--                        <button type="submit" name="delete" class="btn btn-outline-danger">Vymazať</button>-->
+                        <input type="hidden" name="id_to_update" value="<?= $vehicle->getId()?>">
+                        <input type="submit" name="update" value="Upraviť" class="btn btn-outline-warning">
+                    </form>
+                    <?php endif;?>
+                </div>
+            <?php } ?>
         </div>
     </div>
-</html>
 
 <?php
 include 'footer.php';

@@ -1,8 +1,9 @@
 <?php
 include 'header.php';
+require "App.php";
+
+$app = new App();
 ?>
-<!DOCTYPE html>
-<html lang="en">
 
 <div>
     <h1 class="nadpisH1">Otázky k prenájmu:</h1>
@@ -19,7 +20,7 @@ include 'header.php';
             }
         </script>
         <a href="javascript: void(0);" style="text-decoration: none" onclick="toggle('q1') ">
-            <h3 class="farba not-underline ital" >Akým spôsobom si môžete prenajať vozidlo ?</h3>
+            <h3 class="farba not-underline ital">Akým spôsobom si môžete prenajať vozidlo ?</h3>
         </a>
         <div id="q1" style="display: none;">
             <p>Vozidlo si môžu prenajať len zaregistrovaný zákazníci. <br>Zaregistrovať sa môžete vpravo hore pri nápise „Zaregistrujte sa / Prihláste sa". <br>Po úspešnej registrácii si môžete na domovskej stránke nájsť sekciu s druhmy ponúkaných vozidiel a môžete si vybrať konkrétne vozidlo. <br> K výberu vozidiel sa dosanete taktiež prostredníctvom navigačného baru.</p>
@@ -62,8 +63,12 @@ include 'header.php';
         </div>
     </div>
 
+
+
 </div>
-</html>
+
+
+
 <?php
 include 'footer.php';
 ?>

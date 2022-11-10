@@ -32,13 +32,31 @@ function reg_kontrola(form){
     }
 }
 
+function correctEmail(e) {
+    var filter = /^\s*[\w\-\+_]+(\.[\w\-\+_]+)*\@[\w\-\+_]+\.[\w\-\+_]+(\.[\w\-\+_]+)*\s*$/;
+    filter = /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/;
+    return filter.test(e);
+}
+
+function checkEmail() {
+    if (correctEmail(document.getElementById("kontrolaMail").value)) {
+        document.getElementById("vypis").innerHTML=" OK";
+        document.getElementById("vypis").style.color = "green";
+        return true;
+    } else {
+        document.getElementById("vypis").innerHTML=" nespravny tvar";
+        document.getElementById("vypis").style.color = "red";
+        return false;
+    }
+}
+
 function zotried_uzivatelov(){
-    $.post("userList.php", {op:"zotried"}, function(data){
+    $.post("vytriedeni.php", {op:"zotried"}, function(data){
         $('#uzivatelia').html(data);
     });
 }
 
-function deleteRiadok(row){
+/*function deleteRiadok(row){
     var d = row.parentNode.parentNode.rowIndex;
     document.getElementById('dsTable').deleteRow(d);
 }
@@ -55,9 +73,9 @@ function deleteCurrentRow(whatrow)
         var delRow = whatrow.parentNode.parentNode;
         deleteRows(delRow);//sends the row for deletion to the function to be deleted
     }
-}
+}*/
 
-function deleteRow(btn) {
+/*function deleteRow(btn) {
     var row = btn.parentNode.parentNode;
     row.parentNode.removeChild(row);
 }
@@ -65,7 +83,7 @@ function deleteRow(btn) {
 
 function Geeks() {
     document.getElementById("row1").remove();
-}
+}*/
 
 
 function redirect(akcia,id1,id2){
@@ -101,10 +119,10 @@ function redirect(akcia,id1,id2){
             post_to_url('pozicane_auta.php', {'delete_pozicane_auto':s, 'delete_pozicana_osoba':id2}, 'post');
         }
         return true;
-    }else if(akcia=='delete_pouzivatel'){
+    }else if(akcia==='del_user'){
         r = confirm("Určite si prajete odstrániť tohto používateľa?");
         if (r==true){
-            post_to_url('userList.php', {'delete_pouzivatel':s}, 'post');
+            post_to_url('userList.php', {'del_user':s}, 'post');
         }
         return true;
     }else if(akcia=='edituj_profil'){
