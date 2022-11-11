@@ -52,6 +52,14 @@ class storage //implements IStorage
         return $vehicles;
     }
 
+    public function getVehicle(int $id_to_update) {
+        $stmt = $this->connection->prepare("SELECT * FROM vehicle_types WHERE id = $id_to_update");
+        $stmt->execute();
+        //najskor sa zavola konstruktor a potom sa to naplni hodnotami... inak to tam odi tie defaultne hodnoty
+        $vehicles = $stmt->fetchAll(PDO::FETCH_CLASS | PDO::FETCH_PROPS_LATE, Vehicle::class );
+        return $vehicles;
+    }
+
     /** @var @var Question $question */
     public function store(Question $q)
     {
@@ -78,9 +86,32 @@ class storage //implements IStorage
     }
 
     public function updateVehicle(int $id_to_update) {
-        $sql = "UPDATE vehicle_type SET name = ?? WHERE id = $id_to_update";
+        /*$stmt = $this->connection->prepare("SELECT * FROM vehicle_types WHERE id = $id_to_update");
+        $stmt->execute();*/
+
+        $stmt = $this->db->prepare("SELECT * FROM vehicle_types WHERE id = $id_to_update");
+        $sql = "SELECT * FROM vehicle_types WHERE id = $id_to_update ";
+        $dbResult = $this->db->query($sql);
+        if ($dbResult->num_rows > 0) {
+            while ($record = $dbResult->fetch_assoc()) {
+                $result[] = new Vehicle($id_to_update, $record['image'], $record['name'], $record['description']);
+            }
+        }
+       /* print_r($dbResult);
+        print_r($id_to_update);
+        print_r($result);*/
+        return $result;
+
+
+
+        /*$_SESSION['nazov'] = $stmt->getQuestion();
+        $text = $q->getText();*/
+
+
+
+        /*$sql = "UPDATE vehicle_type SET name = ?? WHERE id = $id_to_update";
         $this->connection->exec($sql);
-        $this->checkDBErrors();
+        $this->checkDBErrors();*/
     }
 
     public function checkDBErrors() {

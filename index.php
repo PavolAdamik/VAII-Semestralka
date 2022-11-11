@@ -92,7 +92,13 @@ $app = new App();
                     <form method="post" enctype="multipart/form-data">
                         <div class="col my-2 ">
                             <input type="file" name="file" class="margin"><br>
-                            <input type="text" name="nazov" class="margin" placeholder="Zadaj nazov"><br>
+                            <input type="text" name="nazov" class="margin" placeholder="Zadaj nazov">
+                           <!-- --><?php
+/*                                $app->getVehicle();
+                                print_r($app->getVehicle());
+                            */?>
+                            <br>
+                            <textarea name="popis" rows="4" cols="50" placeholder="Zadaj popis"></textarea>
                             <input type="text" name="popis" placeholder="Zadaj popis" class="margin"><br>
                             <input type="submit" value="Odosli subor" class="margin">
 <!--                            <button type="button" class="btn btn-outline-success">Vytvorit</button>
@@ -108,8 +114,8 @@ $app = new App();
 
         <div class="d-flex justify-content-lg-start flex-wrap ">
             <?php foreach ($app->getAllVehicle() as $vehicle) { ?>
-                <div class="card" style="width: 16rem; margin: 1rem">
-                    <img src="pictures/<?=$vehicle->getImage()?>" class="card-img-top" height="160">
+                <div class="card" style="width: 18rem; margin: 1rem">
+                    <img src="pictures/<?=$vehicle->getImage()?>" class="card-img-top" height="160" alt="cannot load an image">
                     <div class="card-body text-end">
                         <!--<div class="text-start mt-1">
                            <form method="post">
@@ -123,8 +129,11 @@ $app = new App();
                             <p class="margin"><?= $vehicle->getDescription() ?></p>
                         </div>
                     </div>
-                    <button type="button" class="btn btn-outline-success" onclick="location.href='osobneAuta.php'">Zobraziť autá</button>
-                    <?php if(isset($_SESSION['prihlaseny']) && $_SESSION['prihlaseny'] == '1' && $_SESSION['admin'] == '1'): ?>
+                    <input type="hidden" name="id_zobrazit" value="<?= $vehicle->getId()?>">
+                    <input type="submit" name="zobrazit" value="Zobraziť autá" class="btn btn-outline-success" onclick="location.href='osobneAuta.php'">
+
+<!--                    <button type="button" class="btn btn-outline-success" onclick="location.href='osobneAuta.php'">Zobraziť autá</button>
+-->                    <?php if(isset($_SESSION['prihlaseny']) && $_SESSION['prihlaseny'] == '1' && $_SESSION['admin'] == '1'): ?>
 
                     <form method="post">
                         <input type="hidden" name="id_to_delete" value="<?= $vehicle->getId()?>">

@@ -60,4 +60,9 @@ class App
         return $this->storage->getAllVehicles();
     }
 
+    public function getVehicle() {
+        return $this->storage->getVehicle($_POST['id_to_update']);
+    }
+
+
 }

@@ -10,7 +10,7 @@ session_start();
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-Zenh87qX5JnK2Jl0vWa8Ck2rdkQ2Bzep5IDxbcnCeuOxjzrPF/et3URy9Bv1WTRi" crossorigin="anonymous">
     <link rel="stylesheet" href="rules.css">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.9.1/font/bootstrap-icons.css">
-    <script src="javaScript.js" type="application/javascript"></script>
+    <script src="javaScript.js"></script>
 
     <title>Palova Pozicovna</title>
 </head>
@@ -69,18 +69,30 @@ session_start();
                             <a class="nav-link" href="contact.php">Kontakt</a>
                         </li>
                     </ul>
-                    <div class="buttons">
-<!--                        <input type="button" value="Login" />-->
+                    <!--                 <ul class="buttons">
+                                         <input type="button" value="Login" />-->
 <!--                        <input type="button" value="Register" />-->
 
                         <?php if(isset($_SESSION['prihlaseny']) && $_SESSION['prihlaseny'] == '1'): ?>
-                            <button class="button button1"><a class="nav-link" href="logout.php">Odhlásiť sa</a></button>
+                                <button class="button button1" onclick="location.href='logout.php'">Odhlásiť sa</button>
+
+
                         <?php else: ?>
-                            <button class="button button1"><a class="nav-link" href="login.php">Prihlásiť sa</a></button>
-                            <button class="button button1"><a class="nav-link" href="registration.php">Registrovať</a></button>
+                        <div class="row">
+                            <!--                           <input type="submit" value="Prihlásiť sa" src="login.php" class="btn button button1">
+                                                       <input type="submit" value="Prihlásiť sa" src="login.php" class="button">
+                           -->
+                            <!--                            <input type="btn button button1" value="Registrovať sa" src="registration.php">
+                                                        <input type="submit" name="submit" value="Prihlásiť sa" class="login_btn">
+                            -->
+
+
+                                <button class="button button1" onclick="location.href='login.php'">Prihlásiť sa</button>
+                                <button class="button button1" onclick="location.href='registration.php'">Registrovať sa</button>
+
+                        </div>
                         <?php endif; ?>
 
                     </div>
                 </div>
-            </div>
         </nav>

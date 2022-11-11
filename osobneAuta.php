@@ -1,8 +1,6 @@
 <?php
 include 'header.php';
 ?>
-    <!DOCTYPE html>
-    <html lang="en">
     <div>
         <h1 class="nadpisH1">Osobné autá:</h1>
         <img src="https://deltarentcar.sk/wp-content/uploads/2022/03/auta_uvod.png" alt="..." class="responsive">
@@ -19,7 +17,7 @@ include 'header.php';
                     <div class="card-body">
                         <h5 class="card-title textik">Škoda Fábia</h5>
                         <p class="card-text">Cena od 40 - 60&#8364; / deň. </p>
-                        <button type="button" class="btn btn-outline-success" onclick=location.href='skodaFabia.php'>Zobraziť detail</button>
+                        <button type="button" class="btn btn-outline-success" onclick="location.href='skodaFabia.php'">Zobraziť detail</button>
                         <?php if(isset($_SESSION['prihlaseny']) && $_SESSION['prihlaseny'] == '1' && $_SESSION['admin'] == '1'): ?>
                             <button type="button" class="btn btn-outline-danger" onclick="location.href='osobneAuta.php'">Vymazať auto</button>
                         <?php endif; ?>
@@ -35,7 +33,7 @@ include 'header.php';
                     <div class="card-body">
                         <h5 class="card-title">Škoda Octavia</h5>
                         <p class="card-text">Cena od 50 - 70&#8364; / deň.</p>
-                        <button type="button" class="btn btn-outline-success" onclick=location.href='skodaOctavia.php'>Zobraziť detail</button>
+                        <button type="button" class="btn btn-outline-success" onclick="location.href='skodaOctavia.php'">Zobraziť detail</button>
                         <?php if(isset($_SESSION['prihlaseny']) && $_SESSION['prihlaseny'] == '1' && $_SESSION['admin'] == '1'): ?>
                             <button type="button" class="btn btn-outline-danger" onclick="location.href='osobneAuta.php'">Vymazať auto</button>
                         <?php endif; ?>
@@ -51,7 +49,7 @@ include 'header.php';
                     <div class="card-body">
                         <h5 class="card-title">Škoda Kodiaq</h5>
                         <p class="card-text">Cena od 70 - 90&#8364; / deň.</p>
-                        <button type="button" class="btn btn-outline-success" onclick=location.href='skodaKodiaq.php'>Zobraziť detail</button>
+                        <button type="button" class="btn btn-outline-success" onclick="location.href='skodaKodiaq.php'">Zobraziť detail</button>
                         <?php if(isset($_SESSION['prihlaseny']) && $_SESSION['prihlaseny'] == '1' && $_SESSION['admin'] == '1'): ?>
                             <button type="button" class="btn btn-outline-danger" onclick="location.href='osobneAuta.php'">Vymazať auto</button>
                         <?php endif; ?>
@@ -67,7 +65,7 @@ include 'header.php';
                     <div class="card-body">
                         <h5 class="card-title textik">Suzuky Vitara</h5>
                         <p class="card-text">Cena od 60 - 80&#8364; / deň. </p>
-                        <button type="button" class="btn btn-outline-success" onclick=location.href='suzukyVitara.php'>Zobraziť detail</button>
+                        <button type="button" class="btn btn-outline-success" onclick="location.href='suzukyVitara.php'">Zobraziť detail</button>
                         <?php if(isset($_SESSION['prihlaseny']) && $_SESSION['prihlaseny'] == '1' && $_SESSION['admin'] == '1'): ?>
                             <button type="button" class="btn btn-outline-danger" onclick="location.href='osobneAuta.php'">Vymazať auto</button>
                         <?php endif; ?>
@@ -83,7 +81,7 @@ include 'header.php';
                     <div class="card-body">
                         <h5 class="card-title">Suzuky Swace</h5>
                         <p class="card-text">Cena od 45 - 65&#8364; / deň.</p>
-                        <button type="button" class="btn btn-outline-success" onclick=location.href='suzukySwace.php'>Zobraziť detail</button>
+                        <button type="button" class="btn btn-outline-success" onclick="location.href='suzukySwace.php'">Zobraziť detail</button>
                         <?php if(isset($_SESSION['prihlaseny']) && $_SESSION['prihlaseny'] == '1' && $_SESSION['admin'] == '1'): ?>
                             <button type="button" class="btn btn-outline-danger" onclick="location.href='osobneAuta.php'">Vymazať auto</button>
                         <?php endif; ?>
@@ -99,7 +97,7 @@ include 'header.php';
                     <div class="card-body">
                         <h5 class="card-title">Suzuky Swift</h5>
                         <p class="card-text">Cena od 35 - 55&#8364; / deň.</p>
-                        <button type="button" class="btn btn-outline-success" onclick=location.href='suzukySwift.php'>Zobraziť detail</button>
+                        <button type="button" class="btn btn-outline-success" onclick="location.href='suzukySwift.php'">Zobraziť detail</button>
                         <?php if(isset($_SESSION['prihlaseny']) && $_SESSION['prihlaseny'] == '1' && $_SESSION['admin'] == '1'): ?>
                             <button type="button" class="btn btn-outline-danger" onclick="location.href='osobneAuta.php'">Vymazať auto</button>
                         <?php endif; ?>
@@ -108,7 +106,6 @@ include 'header.php';
             </div>
         </div>
     </div>
-    </html>
 <?php
 include 'footer.php';
 ?>

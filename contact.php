@@ -1,8 +1,6 @@
 <?php
 include 'header.php';
 ?>
-<!DOCTYPE html>
-<html lang="en">
 <div class="kontainer">
     <!--Section: Contact v.2-->
     <section class="mb-4">
@@ -79,7 +77,6 @@ include 'header.php';
         </div>
     </section>
 </div>
-</html>
 <?php
 include 'footer.php';
 ?>
