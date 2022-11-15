@@ -1,8 +1,7 @@
 <?php
 include 'header.php';
 ?>
-    <!DOCTYPE html>
-    <html lang="en">
+
 
 <div>
     <div><h1 class="nadpisH1">Suzuky Swace: <button type="button" class="btn btn-success">Prenajať</button>
@@ -114,7 +113,6 @@ include 'header.php';
     </div>
 
 </div>
-    </html>
 
 <?php
 include 'footer.php';

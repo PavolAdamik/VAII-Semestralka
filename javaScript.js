@@ -1,3 +1,25 @@
+function checkUpdateVehicleType(form) {
+    if(form.id.value === ""){
+        alert("Musíte zadať id typu vozidla.");
+        form.id.focus();
+        return false;
+    } else if(form.image.value === ""){
+        alert("Musíte vybrat obrazok.");
+        form.image.focus();
+        return false;
+    } else if(form.name.value === ""){
+        alert("Musíte zadať nazov typu vozidiel.");
+        form.name.focus();
+        return false;
+    } else if(form.description.value === ""){
+        alert("Musíte zadať popis typou vozidiel.");
+        form.description.focus();
+        return false;
+    } else {
+        return true;
+    }
+}
+
 function reg_kontrola(form){
     if(form.firstname.value === ""){
         alert("Musíte zadať vaše meno.");
@@ -11,36 +33,174 @@ function reg_kontrola(form){
         alert("Musíte zadať váš mail.");
         form.email.focus();
         return false;
-    }
-
-    else if(form.driving_licence.value === "") {
+    } else if(document.getElementById("email").innerHTML=="nespravny tvar"){
+        alert("Nesprávny tvar emailuu!");
+        form.email.focus();
+        return false;
+    } else if(form.driving_licence.value === "") {
         alert("Musíte zadať váš vodičský preukaz.");
         form.driving_licence.focus();
         return false;
-    }
-        /*  }else if(document.getElementById("driving_licence").innerHTML="nespravny tvar"){
-              alert("Nesprávny tvar vodicskeho preukazu!");
-              form.driving_licence.focus();
-              return false;
-          }*/
-
-    else if(form.password.value === "") {
+    } else if(document.getElementById("driving_licence").innerHTML=="nespravny tvar"){
+      alert("Nesprávny tvar vodicskeho preukazu!");
+      form.driving_licence.focus();
+      return false;
+    } else if(form.password.value === "") {
         alert("Musíte zadať vaše heslo.");
         form.password.focus();
         return false;
-    }
-    else if(form.confirmPassword.value === "") {
+    } else if(document.getElementById("password").style.color != "green") {
+        alert("Skús silnejšie heslo (aby bolo krásne zelené)!");
+        form.password.focus();
+        return false;
+    } else if(form.confirmPassword.value === "") {
         alert("Musíte znovu zadať vaše heslo.");
         form.confirmPassword.focus();
         return false;
+    } else if(form.password.value != form.confirmPassword.value) {
+        alert("Heslá sa nezhodujú, skús znovu1")
+        return false;
     }
-        else if(checkEmail() && checkDrivingLicence()) {
+        else if(checkEmail() && checkDrivingLicence() && document.getElementById("password").style.color == "green" && form.password.value == form.confirmPassword.value) {
             return true
     }
     else {
-        alert("Zlý formát emailu alebo vodičského preukazu!");
+        alert("Niekde nastala chyba!");
         return false;
     }
+}
+
+function vehicle_validation(form) {
+
+    if (form.file.value === "") {
+        alert("Musíte vybrať obrázok danej kategórie vozidiel.");
+        form.file.focus();
+        return false;
+    } else if (form.nazov.value === "") {
+        alert("Musíte zadať názov typu kategórie vozidiel.");
+        form.nazov.focus();
+        return false;
+    } else if (form.popis.value === "") {
+        alert("Musíte zadať popis typu kategórie vozidiel.");
+        form.popis.focus();
+        return false;
+    }
+    return true;
+}
+
+function vehicle_validationUpdate(form) {
+    if (form.fileUpravovane.value === "") {
+        alert("Musíte vybrať obrázok danej kategórie vozidiel.");
+        form.fileUpravovane.focus();
+        return false;
+    } else if (form.nazovUpravovane.value === "") {
+        alert("Musíte zadať názov typu kategórie vozidiel.");
+        form.nazovUpravovane.focus();
+        return false;
+    } else if (form.popisUpravovane.value === "") {
+        alert("Musíte zadať popis typu kategórie vozidiel.");
+        form.popisUpravovane.focus();
+        return false;
+    }
+    return true;
+}
+
+function car_validation(form) {
+    if (form.spzCar.value === "") {
+        alert("Musíte zadať ŠPZ auta.");
+        form.spzCar.focus();
+        return false;
+    } else if (form.idCategoryCar.value === "") {
+        alert("Musíte id typu kategórie vozidiel.");
+        form.idCategoryCar.focus();
+        return false;
+    } else if(form.fileCar.value === "") {
+        alert("Musíte vybrať obrázok auta.");
+        form.fileCar.focus();
+        return false;
+    } else if (form.nazovCar.value === "") {
+        alert("Musíte zadať názov/značku auta.");
+        form.nazovCar.focus();
+        return false;
+    } else if (form.minCar.value === "") {
+        alert("Musíte zadať minimálnu cenu auta.");
+        form.minCar.focus();
+        return false;
+    } else if (form.maxCar.value === "") {
+        alert("Musíte zadať maximálnu cenu auta.");
+        form.maxCar.focus();
+        return false;
+    } else if (form.file1Car.value === "") {
+        alert("Musíte ďaľší obrázok auta.");
+        form.file1Car.focus();
+        return false;
+    } else if (form.file2Car.value === "") {
+        alert("Musíte ďaľší obrázok auta.");
+        form.file2Car.focus();
+        return false;
+    } else if (form.file3Car.value === "") {
+        alert("Musíte ďaľší obrázok auta.");
+        form.file3Car.focus();
+        return false;
+    } else if (form.yearCar.value === "") {
+        alert("Musíte zadať rok výroby auta.");
+        form.yearCar.focus();
+        return false;
+    } else if (form.typeCar.value === "") {
+        alert("Musíte zadať typ, či je auto benzín, diesel alebo hybrid alebo full electric :D.");
+        form.typeCar.focus();
+        return false;
+    }
+    return true;
+}
+
+function car_validationUpdate(form) {
+    if (form.spzCarUpravovane.value === "") {
+        alert("Musíte zadať ŠPZ auta.");
+        form.spzCarUpravovane.focus();
+        return false;
+    } else if (form.idCategoryCarUpravovane.value === "") {
+        alert("Musíte id typu kategórie vozidiel.");
+        form.idCategoryCarUpravovane.focus();
+        return false;
+    } else if(form.fileCarUpravovane.value === "") {
+        alert("Musíte vybrať obrázok auta.");
+        form.fileCarUpravovane.focus();
+        return false;
+    } else if (form.nazovCarUpravovane.value === "") {
+        alert("Musíte zadať názov/značku auta.");
+        form.nazovCarUpravovane.focus();
+        return false;
+    } else if (form.minCarUpravovane.value === "") {
+        alert("Musíte zadať minimálnu cenu auta.");
+        form.minCarUpravovane.focus();
+        return false;
+    } else if (form.maxCarUpravovane.value === "") {
+        alert("Musíte zadať maximálnu cenu auta.");
+        form.maxCarUpravovane.focus();
+        return false;
+    } else if (form.file1CarUpravovane.value === "") {
+        alert("Musíte ďaľší obrázok auta.");
+        form.file1CarUpravovane.focus();
+        return false;
+    } else if (form.file2CarUpravovane.value === "") {
+        alert("Musíte ďaľší obrázok auta.");
+        form.file2CarUpravovane.focus();
+        return false;
+    } else if (form.file3CarUpravovane.value === "") {
+        alert("Musíte ďaľší obrázok auta.");
+        form.file3CarUpravovane.focus();
+        return false;
+    } else if (form.yearCarUpravovane.value === "") {
+        alert("Musíte zadať rok výroby auta.");
+        form.yearCarUpravovane.focus();
+        return false;
+    } else if (form.typeCarUpravovane.value === "") {
+        alert("Musíte zadať typ, či je auto benzín, diesel alebo hybrid alebo full electric :D.");
+        form.typeCarUpravovane.focus();
+        return false;
+    }
+    return true;
 }
 
 function correctEmail(e) {
@@ -80,86 +240,20 @@ function checkDrivingLicence() {
     }
 }
 
-function zotried_uzivatelov(){
-    $.post("vytriedeni.php", {op:"zotried"}, function(data){
-        $('#uzivatelia').html(data);
-    });
-}
-
-/*function deleteRiadok(row){
-    var d = row.parentNode.parentNode.rowIndex;
-    document.getElementById('dsTable').deleteRow(d);
-}
-
-function deleteRow(btn) {
-    var row = btn.parentNode.parentNode;
-    row.parentNode.removeChild(row);
-}
-
-function deleteCurrentRow(whatrow)
-{
-    //deletes the approriate row according to what button was pressed
-    if (hasLoaded) {
-        var delRow = whatrow.parentNode.parentNode;
-        deleteRows(delRow);//sends the row for deletion to the function to be deleted
-    }
-}*/
-
-/*function deleteRow(btn) {
-    var row = btn.parentNode.parentNode;
-    row.parentNode.removeChild(row);
-}
-
-
-function Geeks() {
-    document.getElementById("row1").remove();
-}*/
-
-
 function redirect(akcia,id1,id2){
     var s = id1;
     var r;
-    if(akcia=='edit'){
-        post_to_url('editovanie.php', {'edituj_auto':s}, 'post');  //nastavovanie premennych na inej stranke
-        return true;
-    }else if(akcia=='delete'){
-        r = confirm("Určite si prajete odstrániť toto auto?");
-        if (r===true){
-            post_to_url('zoznam_aut.php', {'zmaz_auto':s}, 'post');
-        }
-        return true;
-    }else if(akcia=='pozicaj'){
-        r = confirm("Určite si prajete požičať toto auto?");
-        if (r==true){
-            post_to_url('zoznam_aut.php', {'pozicaj':s}, 'post');
-        }
-        return true;
-    }else if(akcia=='zrus_vypozicku'){
-        r = confirm("Určite si prajete zrušiť túto výpožičku?");
-        if (r==true){
-            post_to_url('moje_prenajate.php', {'zrus_vypozicku_kniha':s, 'zrus_vypozicku_osoba':id2}, 'post');
-        }
-        return true;
-    }else if(akcia=='edit_pozicane'){
-        post_to_url('editovanie.php', {'edituj_vypozicku_auto':s, 'edituj_vypozicku_osoba':id2}, 'post');
-        return true;
-    }else if(akcia=='delete_pozicane'){
-        r = confirm("Určite si prajete zrušiť túto výpožičku?");
-        if (r==true){
-            post_to_url('pozicane_auta.php', {'delete_pozicane_auto':s, 'delete_pozicana_osoba':id2}, 'post');
-        }
-        return true;
-    }else if(akcia==='del_user'){
+     if(akcia==='del_user'){
         r = confirm("Určite si prajete odstrániť tohto používateľa?");
         if (r==true){
             post_to_url('userList.php', {'del_user':s}, 'post');
         }
         return true;
-    }else if(akcia=='edituj_profil'){
-        post_to_url('profil.php', {'edituj_profil':s}, 'post');
-        return true;
-    }
-    return false;
+    } else if(akcia=='edituj_profil') {
+         post_to_url('profile.php', {'edituj_profil': s}, 'post');
+         return true;
+     }
+         return false;
 }
 
 function post_to_url(path, params, method) {
@@ -183,6 +277,7 @@ function post_to_url(path, params, method) {
     form.submit();
 }
 
+
 function lengthOfPassword(password){
     var xhttp;
     if(password.length == 0){
@@ -202,7 +297,6 @@ function lengthOfPassword(password){
         }
         if(password.length > 8){
             document.getElementById("password").style.color = "green";
-
         }
     };
     xhttp.open("GET", "check.php?q="+password.length, true);

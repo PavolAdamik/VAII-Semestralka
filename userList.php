@@ -18,8 +18,8 @@ mysqli_close($db);
 ?>
 
     <h3 class="nadpisH1">Zoznam používateľov</h3>
-    <div class="tabulka">
-        <table id="users" align="center">
+    <div class="tabulka" >
+        <table id="users" >
             <tr>
                 <th>Meno</th>
                 <th>Priezvisko</th>
@@ -46,7 +46,7 @@ mysqli_close($db);
                     print "\t\t<td>$row[$i]</td>\n";
                 }
                 print "\t\t<td class='tlacidla kurzor' onclick=\"redirect('del_user',$row[0],'');
-                    \"><img src='pictures/delete.png' class='tlacidla' alt='vymazat riadok' /></td>\n";
+                    \"><img src='pictures/delete.png' class='tlacidla' alt='vymazat riadok'></td>\n";
             }
             ?>
 
@@ -76,11 +76,6 @@ mysqli_close($db);
             }
             */?>
         </table>
-        <div class="form-group" align="center">
-            <div class="col-sm-1">
-                <button type="button" id="gombik" class="btn btn-default" name="zotried" onclick="zotried_uzivatelov()">Zotriediť</button>
-            </div>
-        </div>
 
     </div>
 

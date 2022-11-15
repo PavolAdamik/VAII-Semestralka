@@ -1,8 +1,6 @@
 <?php
 include 'header.php';
 ?>
-    <!DOCTYPE html>
-    <html lang="en">
 <div class="Vitara">
     <div><h1 class="nadpisH1">Suzuky Vitara: <button type="button" class="btn btn-success">Prenajať</button>
         </h1>
@@ -114,9 +112,6 @@ include 'header.php';
     </div>
 
 </div>
-
-    </html>
-
 <?php
 include 'footer.php';
 ?>

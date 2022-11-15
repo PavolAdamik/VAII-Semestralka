@@ -197,8 +197,6 @@ form{
     max-width: 100%;
     margin: auto;
     height: auto;
-
-
 }
 
 .tabulka th{
@@ -225,6 +223,10 @@ form{
 
 .kurzor{
     cursor: pointer;
+}
+
+.centrovat {
+    text-align: center;
 }
 
 .tlacidla{
